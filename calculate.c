@@ -44,7 +44,7 @@ int main(void)
         opt_sum_f += opt_f;
     }
 
-	fp = fopen("opt_hash.txt", "r");
+    fp = fopen("opt_hash.txt", "r");
     if (!fp) {
         fp = fopen("orig.txt", "r");
         if (!fp) {
