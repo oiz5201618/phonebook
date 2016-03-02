@@ -2,7 +2,7 @@
 #define _PHONEBOOK_H
 
 #define MAX_LAST_NAME_SIZE 16
-#define HASH_NUMBER 250
+#define HASH_NUMBER 15511
 
 /* hashfunction version */
 typedef struct __PHONE_BOOK_ENTRY {

@@ -23,26 +23,23 @@ void append(char lastName[], entry table[])
 {
     /* allocate memory for the new entry and put lastName */
     int hash = hashfunction(lastName);
-
-    if (table[hash].pNext == NULL) {
-        strcpy(table[hash].lastName, lastName);
-    } else {
+	//printf("%d\n",hash);
         entry *link;
-        link = table[hash].pNext;
-        while (link != NULL) {
+        link = &table[hash];
+        while (link->pNext != NULL) {
             link = link->pNext;
         }
-        link = (entry *) malloc(sizeof(entry));
+        link->pNext = (entry *) malloc(sizeof(entry));
         strcpy(link->lastName, lastName);
-    }
+
 }
 
 int hashfunction(char lastName[])
 {
-    int sum = 0;
+    unsigned int sum = 0;
     int i = 0;
     while (lastName[i] != '\0') {
-        sum = sum + lastName[i];
+        sum = sum*59 + lastName[i];
         i++;
     }
 
@@ -53,7 +50,7 @@ int hashfunction(char lastName[])
 void hashtable_init(entry table[])
 {
     int i = 0;
-    for (i; i<HASH_NUMBER ; i++) {
+    for (; i<HASH_NUMBER ; i++) {
         table[i].pNext = NULL;
     }
 }
