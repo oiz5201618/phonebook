@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     e = pHead;
 
     /* the givn last name to find */
-    char input[MAX_LAST_NAME_SIZE] = "zyxel";
+    char input[MAX_LAST_NAME_SIZE] = "zyexl";
     e = pHead;
 
     /* assert(findName(input, e) &&

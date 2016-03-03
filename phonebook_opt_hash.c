@@ -24,13 +24,10 @@ void append(char lastName[], entry table[])
     /* allocate memory for the new entry and put lastName */
     int hash = hashfunction(lastName);
 	//printf("%d\n",hash);
-        entry *link;
-        link = &table[hash];
-        while (link->pNext != NULL) {
-            link = link->pNext;
-        }
-        link->pNext = (entry *) malloc(sizeof(entry));
-        strcpy(link->lastName, lastName);
+	entry *n_entry = (entry *) malloc(sizeof(entry));
+	n_entry->pNext = table[hash].pNext;
+	table[hash].pNext = n_entry;
+        strcpy(n_entry->lastName, lastName);
 
 }
 
