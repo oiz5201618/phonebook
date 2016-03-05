@@ -9,7 +9,7 @@
 
 entry *findName(char lastname[], entry *pHead)
 {
-    printf ("Levenshtein numver set:%d\n",LD_NUMBER);
+    printf ("Levenshtein number set:%d\n",LD_NUMBER);
     int kk1 = strlen(lastname) + LD_NUMBER;
     int kk2 = strlen(lastname) - LD_NUMBER;
     while (pHead != NULL) {
