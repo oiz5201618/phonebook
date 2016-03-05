@@ -3,9 +3,10 @@ CFLAGS_common ?= -Wall -std=gnu99
 CFLAGS_orig = -O0
 CFLAGS_opt  = -O0
 CFLAGS_opt_hash = -O0
+CFLAGS_fuzzy_recursive = -O0
 
 EXEC = phonebook_orig phonebook_opt
-EX = phonebook_orig phonebook_opt phonebook_opt_hash
+EX = phonebook_orig phonebook_opt phonebook_opt_hash phonebook_fuzzy_recursive
 all: $(EX)
 
 SRCS_common = main.c
@@ -25,6 +26,11 @@ phonebook_opt_hash: $(SRCS_common) phonebook_opt_hash.c phonebook_opt_hash.h
 	$(CC) $(CFLAGS_common) $(CFLAGS_opt_hash) \
 		-DIMPL="\"$@.h\"" -o $@ \
 		-DHASH="1" \
+		$(SRCS_common) $@.c
+
+phonebook_fuzzy_recursive: $(SRCS_common) phonebook_fuzzy_recursive.c phonebook_orig.h
+	$(CC) $(CFLAGS_common) $(CFLAGS_fuzzy_recursive) \
+		-DIMPL="\"phonebook_orig.h\"" -o $@ \
 		$(SRCS_common) $@.c
 
 run: $(EXEC)
